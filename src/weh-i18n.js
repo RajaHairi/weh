@@ -51,6 +51,5 @@ function GetMessage(messageName,substitutions) {
 
 module.exports = {
 	getMessage: GetMessage,
-	reload: Load			
 }
 
