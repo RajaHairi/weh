@@ -58,6 +58,7 @@ let onDOMLoaded = new Promise((resolve, _) => {
   window.addEventListener("DOMContentLoaded", resolve);
 });
 
+// FIXME:RACE
 async function init_prefs() {
   let wehPrefs = require('weh-prefs');
   weh.prefs = wehPrefs;

@@ -139,6 +139,7 @@ function Parse(str) {
 var lastHash = 0;
 
 // Init pref from local storage
+// FIXME:RACE
 browser.storage.local.get("weh-prefs").then(entries => {
   let prefs = entries["weh-prefs"] || {};
   wehPrefs.assign(prefs);

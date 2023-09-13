@@ -17,6 +17,7 @@ var customStrings = {}
 const SUBST_RE = new RegExp("\\$[a-zA-Z]*([0-9]+)\\$","g");
 
 function Load() {
+  // FIXME:RACE
   browser.storage.local.get("wehI18nCustom").then((result) => {
     var weCustomStrings = result.wehI18nCustom;
     if (weCustomStrings) {

@@ -23,6 +23,7 @@ import 'css/weh-form-states.css';
 const initialState = {};
 var needRestore = false;
 
+// FIXME:RACE
 async function Initialize() {
   let storage = await browser.storage.local.get("wehI18nCustom");
   let wehI18nCustom = storage.wehI18nCustom;
