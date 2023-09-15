@@ -27,7 +27,6 @@ var urlParams = typeof _wehPanelName !== "undefined" && { panel: _wehPanelName }
 if (!urlParams.panel) throw new Error("Panel name not defined in URL");
 
 weh.uiName = urlParams.panel;
-var usePrefs = !urlParams.noprefs;
 
 /* setting up RPC */
 weh.rpc = require('weh-rpc');
@@ -48,7 +47,6 @@ port.onMessage.addListener((message) => {
 /* notify background app is started */
 weh.rpc.call("appStarted", {
 		uiName: weh.uiName,
-		usePrefs: usePrefs
 	}).catch(function (err) {
 		console.info("appStarted failed", err);
 	});
@@ -78,10 +76,7 @@ async function init_prefs() {
   wehPrefs.forceNotify(false);
 }
 
-let pref_promise = Promise.resolve();
-if (usePrefs) {
-  pref_promise = init_prefs();
-}
+let pref_promise = init_prefs();
 
 /* notifies app ready: DOM and prefs, if used, are loaded */
 onDOMLoaded.then(pref_promise).then(() => weh.rpc.call("appReady", {

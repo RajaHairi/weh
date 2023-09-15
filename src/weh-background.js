@@ -157,9 +157,7 @@ browser.storage.local.get("weh-prefs").then(entries => {
     }
     Object.keys(apps).forEach((app)=>{
       var appOptions = apps[app];
-      if(appOptions.usePrefs) {
-        weh.rpc.call(app,"setPrefs",newPrefs);
-      }
+      weh.rpc.call(app,"setPrefs",newPrefs);
     });
   });
 }).catch(e => {
